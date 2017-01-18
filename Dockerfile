@@ -27,6 +27,7 @@ RUN { \
 
 RUN a2enmod rewrite expires
 
+EXPOSE 8080
 VOLUME /var/www/html
 
 RUN chmod -R 777 /var/log/apache2
