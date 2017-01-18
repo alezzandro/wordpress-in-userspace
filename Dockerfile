@@ -30,6 +30,7 @@ RUN a2enmod rewrite expires
 VOLUME /var/www/html
 
 RUN chmod -R 777 /var/log/apache2
+RUN chmod -R 777 /var/lock/apache2
 RUN sed -i 's/Listen 80/Listen 8080/g' /etc/apache2/ports.conf
 
 ENV WORDPRESS_VERSION 4.7
