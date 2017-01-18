@@ -29,7 +29,7 @@ RUN a2enmod rewrite expires
 
 VOLUME /var/www/html
 
-RUN chown -R www-data:www-data /var/log/apache2
+RUN chmod -R 777 /var/log/apache2
 RUN sed -i 's/Listen 80/Listen 8080/g' /etc/apache2/ports.conf
 
 ENV WORDPRESS_VERSION 4.7
@@ -41,11 +41,9 @@ RUN set -ex; \
 # upstream tarballs include ./wordpress/ so this gives us /usr/src/wordpress
 	tar -xzf wordpress.tar.gz -C /usr/src/; \
 	rm wordpress.tar.gz; \
-	chown -R www-data:www-data /usr/src/wordpress
+	chmod -R 777 /usr/src/wordpress
 
 COPY docker-entrypoint.sh /usr/local/bin/
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["apache2-foreground"]
-
-USER www-data
