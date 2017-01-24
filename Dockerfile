@@ -31,6 +31,9 @@ VOLUME /var/www/html
 
 EXPOSE 8080
 RUN sed -i 's/Listen 80/Listen 8080/g' /etc/apache2/ports.conf
+RUN chmod g+w /var/log/apache2
+RUN chmod g+w /var/lock/apache2
+RUN chmod g+w /var/run/apache2
 
 ENV WORDPRESS_VERSION 4.7
 ENV WORDPRESS_SHA1 1e14144c4db71421dc4ed22f94c3914dfc3b7020
